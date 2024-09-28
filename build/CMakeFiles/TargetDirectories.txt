@@ -1,0 +1,3 @@
+D:/Work/Projects/snake-cpp/build/CMakeFiles/snake-cpp.dir
+D:/Work/Projects/snake-cpp/build/CMakeFiles/edit_cache.dir
+D:/Work/Projects/snake-cpp/build/CMakeFiles/rebuild_cache.dir
