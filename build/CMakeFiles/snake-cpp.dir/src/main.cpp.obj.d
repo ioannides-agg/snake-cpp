@@ -1,5 +1,5 @@
-CMakeFiles/snake-cpp.dir/main.cpp.obj: \
- D:/Work/Projects/snake-cpp/main.cpp \
+CMakeFiles/snake-cpp.dir/src/main.cpp.obj: \
+ D:\Work\Projects\snake-cpp\src\main.cpp \
  C:/msys64/ucrt64/include/c++/14.1.0/iostream \
  C:/msys64/ucrt64/include/c++/14.1.0/bits/requires_hosted.h \
  C:/msys64/ucrt64/include/c++/14.1.0/x86_64-w64-mingw32/bits/c++config.h \
@@ -135,4 +135,7 @@ CMakeFiles/snake-cpp.dir/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.1.0/bits/basic_ios.tcc \
  C:/msys64/ucrt64/include/c++/14.1.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/14.1.0/istream \
- C:/msys64/ucrt64/include/c++/14.1.0/bits/istream.tcc
+ C:/msys64/ucrt64/include/c++/14.1.0/bits/istream.tcc \
+ D:/Work/Projects/snake-cpp/dependencies/GLFW/glfw3.h \
+ C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.1.0/include/stdint.h \
+ C:/msys64/ucrt64/include/stdint.h C:/msys64/ucrt64/include/GL/gl.h
