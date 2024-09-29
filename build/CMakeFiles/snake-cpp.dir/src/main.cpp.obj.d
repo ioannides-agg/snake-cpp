@@ -136,6 +136,8 @@ CMakeFiles/snake-cpp.dir/src/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/14.1.0/bits/ostream.tcc \
  C:/msys64/ucrt64/include/c++/14.1.0/istream \
  C:/msys64/ucrt64/include/c++/14.1.0/bits/istream.tcc \
- D:/Work/Projects/snake-cpp/dependencies/GLFW/glfw3.h \
+ D:/Work/Projects/snake-cpp/dependencies/glad/glad.h \
+ D:/Work/Projects/snake-cpp/dependencies/KHR/khrplatform.h \
  C:/msys64/ucrt64/lib/gcc/x86_64-w64-mingw32/14.1.0/include/stdint.h \
- C:/msys64/ucrt64/include/stdint.h C:/msys64/ucrt64/include/GL/gl.h
+ C:/msys64/ucrt64/include/stdint.h \
+ D:/Work/Projects/snake-cpp/dependencies/GLFW/glfw3.h

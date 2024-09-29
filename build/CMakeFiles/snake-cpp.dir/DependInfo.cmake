@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "D:/Work/Projects/snake-cpp/src/glad.c" "CMakeFiles/snake-cpp.dir/src/glad.c.obj" "gcc" "CMakeFiles/snake-cpp.dir/src/glad.c.obj.d"
   "D:/Work/Projects/snake-cpp/src/main.cpp" "CMakeFiles/snake-cpp.dir/src/main.cpp.obj" "gcc" "CMakeFiles/snake-cpp.dir/src/main.cpp.obj.d"
   )
 
