@@ -62,27 +62,17 @@ class snake {
 
         void check_collision() {
             if(snake_body.size() > 1) {
-                for(int i = 0; i < snake_body.size(); i++) {
+                for(int i = 1; i < snake_body.size(); i++) {
                     if(snake_body[0].x == snake_body[i].x && snake_body[0].y == snake_body[i].y) {
-                        init_snake();
+                        SDL_Event event;
+                        event.type = SNAKE_COLLISION_EVENT;
+                        
+                        SDL_PushEvent(&event);
+
                         return;
                     }
                 }
             }
-        }
-        
-        template <typename T>
-        bool check_collision(std::vector<T> colliders) {
-            if(snake_body.size() > 1) {
-                for(int i = 0; i < colliders.size(); i++) {
-                    if(snake_body[0].x == snake_body[i].x && snake_body[0].y == snake_body[i].y) {
-                        return true;
-                    }
-                }
-                return false;
-            }
-
-            return false;
         }
 
         void render_body(SDL_FRect &drawRect, SDL_Renderer &renderer) {
@@ -99,13 +89,15 @@ class snake {
             SDL_RenderFillRect(&renderer, &drawRect);
         }
 
-        void add() {
-            SDL_FPoint new_part = snake_body.back();
+        void grow() {
+            SDL_Point new_part = snake_body.back();
             snake_body.push_back(new_part);
         }
 
+        SDL_Point get_head() const { return snake_body[0]; }
+
     private:
-        std::vector<SDL_FPoint> snake_body;
+        std::vector<SDL_Point> snake_body;
 
 };
 

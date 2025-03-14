@@ -1,5 +1,13 @@
 #include "includes.h"
 
+void reset_game(snake &s, std::vector<food> &foods) {
+    s.init_snake();
+
+    for(auto& food : foods) {
+        food.reposition();
+    }
+}
+
 int main() {
     constexpr int fps_target = 15;
     constexpr int frame_delay = 1000/ fps_target;
@@ -42,6 +50,9 @@ int main() {
     { //GAME LOOP
         snek.move();
         snek.check_collision();
+        for(auto& food : foods) {
+            food.collide_with(snek.get_head());
+        }
     }
 
     { //RENDER LOOP
@@ -71,7 +82,7 @@ int main() {
             switch (event.type) {
             case SDL_EVENT_QUIT:
                 running = false;
-                break;
+            break;
 
             case SDL_EVENT_KEY_DOWN:
 
@@ -82,7 +93,7 @@ int main() {
                         
 
                     case SDL_SCANCODE_R:
-                        snek.init_snake();
+                        reset_game(snek, foods);
                     break;
 
                     case SDL_SCANCODE_W:
@@ -106,6 +117,24 @@ int main() {
                     break;
                 }
             break;
+
+            default: //handle custom events
+                if (event.type == SNAKE_COLLISION_EVENT)
+                { 
+                    reset_game(snek, foods);
+                    break;
+                }
+
+                if (event.type == FOOD_COLLISION_EVENT)
+                {
+                    //std::cout << "test" << "\n";
+                    snek.grow();
+                    food* eaten = static_cast<food*>(event.user.data1);
+                    eaten->reposition();
+                    break;
+                }
+            break;
+
             }
         }
 
@@ -119,7 +148,7 @@ int main() {
     
 
     }
-
+    
     SDL_DestroyWindow(win);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
