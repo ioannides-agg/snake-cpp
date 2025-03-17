@@ -1,12 +1,14 @@
 #ifndef INCLUDES_H
 #define INCLUDES_H
 
-#include <iostream>
-#include <vector>
 #include "SDL3/SDL.h"
 #include "SDL3/SDL_main.h"
+#include "engine/renderer.h"
+#include "engine/window.h"
+#include "game/food.h"
+#include "game/snake.h"
 #include "global.h"
-#include "snake.h"
-#include "food.h"
+#include <iostream>
+#include <vector>
 
 #endif

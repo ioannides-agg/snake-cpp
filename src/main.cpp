@@ -20,15 +20,8 @@ int main() {
     return -1;
   }
 
-  SDL_Window *win;
-  SDL_Renderer *renderer;
-
-  if (!SDL_CreateWindowAndRenderer("Snake game", SG::width, SG::height, 0, &win,
-                                   &renderer)) {
-    SDL_Log("Could not create window or renderer: %s", SDL_GetError());
-    SDL_Quit();
-    return -1;
-  }
+  Window window("Snake Game");
+  Renderer renderer(window.getWindow());
 
   bool running = true;
 
@@ -39,9 +32,6 @@ int main() {
     food berry;
     foods.push_back(berry);
   }
-
-  SDL_FRect draw;
-  draw.h = draw.w = SG::tile_size;
 
   while (running) {
     frame_start = SDL_GetTicks();
@@ -54,21 +44,18 @@ int main() {
     }
 
     { // RENDER LOOP
-      SDL_SetRenderDrawColor(renderer, 0, 0, 0, SDL_ALPHA_OPAQUE);
-      SDL_RenderClear(renderer);
+      renderer.refresh();
 
       for (auto &food : foods) {
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, SDL_ALPHA_OPAQUE);
-        food.render(draw, *renderer);
+        renderer.change_color(255, 0, 0);
+        renderer.render(food.get_point());
       }
 
-      SDL_SetRenderDrawColor(renderer, 0, 125, 40, SDL_ALPHA_OPAQUE);
-      snek.render_body(draw, *renderer);
+      renderer.change_color(0, 125, 40);
+      renderer.render(snek.get_body());
 
-      SDL_SetRenderDrawColor(renderer, 0, 125, 125, SDL_ALPHA_OPAQUE);
-      snek.render_head(draw, *renderer);
-
-      SDL_RenderPresent(renderer);
+      renderer.change_color(0, 120, 120);
+      renderer.render(snek.get_head());
     }
 
     { // EVENT HANDLING
@@ -92,22 +79,22 @@ int main() {
 
           case SDL_SCANCODE_W:
           case SDL_SCANCODE_UP:
-            snek.dir = SG::up;
+            snek.dir = game::up;
             break;
 
           case SDL_SCANCODE_S:
           case SDL_SCANCODE_DOWN:
-            snek.dir = SG::down;
+            snek.dir = game::down;
             break;
 
           case SDL_SCANCODE_A:
           case SDL_SCANCODE_LEFT:
-            snek.dir = SG::left;
+            snek.dir = game::left;
             break;
 
           case SDL_SCANCODE_D:
           case SDL_SCANCODE_RIGHT:
-            snek.dir = SG::right;
+            snek.dir = game::right;
             break;
           }
           break;
@@ -137,8 +124,6 @@ int main() {
     }
   }
 
-  SDL_DestroyWindow(win);
-  SDL_DestroyRenderer(renderer);
   SDL_Quit();
 
   return 0;

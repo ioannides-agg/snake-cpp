@@ -1,23 +1,17 @@
 #ifndef FOOD_H
 #define FOOD_H
 
+#include "../global.h"
 #include "SDL3/SDL.h"
-#include "global.h"
 #include <iostream>
 
 class food {
 public:
-  food() { food_point = SG::random_tile(); }
+  food() { food_point = game::random_tile(); }
 
   void reposition() {
-    food_point = SG::random_tile();
+    food_point = game::random_tile();
     collided = false;
-  }
-
-  void render(SDL_FRect &drawRect, SDL_Renderer &renderer) {
-    drawRect.x = food_point.x * SG::tile_size;
-    drawRect.y = food_point.y * SG::tile_size;
-    SDL_RenderFillRect(&renderer, &drawRect);
   }
 
   float x() const { return food_point.x; }
@@ -35,6 +29,8 @@ public:
       SDL_PushEvent(&event);
     }
   }
+
+  SDL_Point get_point() { return food_point; }
 
 private:
   bool collided = false;
