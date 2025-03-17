@@ -73,7 +73,7 @@ int main() {
 
     { // EVENT HANDLING
       SDL_Event event;
-      if (SDL_PollEvent(&event)) {
+      while (SDL_PollEvent(&event)) {
         switch (event.type) {
         case SDL_EVENT_QUIT:
           running = false;
