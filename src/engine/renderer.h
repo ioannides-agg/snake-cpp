@@ -25,15 +25,15 @@ public:
 
   void refresh() {
     SDL_RenderPresent(rend);
-    change_color();
+    changeColor();
     SDL_RenderClear(rend);
   }
 
-  void change_color() {
+  void changeColor() {
     SDL_SetRenderDrawColor(rend, 0, 0, 0, SDL_ALPHA_OPAQUE);
   }
 
-  void change_color(int r, int g, int b) {
+  void changeColor(int r, int g, int b) {
     SDL_SetRenderDrawColor(rend, r, g, b, SDL_ALPHA_OPAQUE);
   }
 

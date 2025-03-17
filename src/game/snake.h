@@ -8,10 +8,10 @@
 
 class snake {
 public:
-  snake() { init_snake(); }
+  snake() { initSnake(); }
   game::direction dir;
 
-  void init_snake() {
+  void initSnake() {
     snake_body.clear();
     snake_body.push_back(game::random_tile());
     dir = game::right;
@@ -42,10 +42,10 @@ public:
       break;
     }
 
-    wrap_around();
+    wrapAround();
   }
 
-  void wrap_around() {
+  void wrapAround() {
     if (snake_body[0].x > settings::width / settings::tile_size) {
       snake_body[0].x = 0;
     }
@@ -60,7 +60,7 @@ public:
     }
   }
 
-  void check_collision() {
+  void checkCollision() {
     if (snake_body.size() > 1) {
       for (int i = 1; i < snake_body.size(); i++) {
         if (snake_body[0].x == snake_body[i].x &&
@@ -81,9 +81,9 @@ public:
     snake_body.push_back(new_part);
   }
 
-  SDL_Point get_head() const { return snake_body[0]; }
+  SDL_Point getHead() const { return snake_body[0]; }
 
-  std::vector<SDL_Point> get_body() const {
+  std::vector<SDL_Point> getBody() const {
     return std::vector<SDL_Point>(snake_body.begin() + 1, snake_body.end());
   }
 

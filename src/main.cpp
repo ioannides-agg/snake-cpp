@@ -1,7 +1,7 @@
 #include "includes.h"
 
-void reset_game(snake &s, std::vector<food> &foods) {
-  s.init_snake();
+void resetGame(snake &s, std::vector<food> &foods) {
+  s.initSnake();
 
   for (auto &food : foods) {
     food.reposition();
@@ -37,9 +37,9 @@ int main() {
     frame_start = SDL_GetTicks();
     { // GAME LOOP
       snek.move();
-      snek.check_collision();
+      snek.checkCollision();
       for (auto &food : foods) {
-        food.collide_with(snek.get_head());
+        food.collideWith(snek.getHead());
       }
     }
 
@@ -47,15 +47,15 @@ int main() {
       renderer.refresh();
 
       for (auto &food : foods) {
-        renderer.change_color(255, 0, 0);
-        renderer.render(food.get_point());
+        renderer.changeColor(255, 0, 0);
+        renderer.render(food.getPoint());
       }
 
-      renderer.change_color(0, 125, 40);
-      renderer.render(snek.get_body());
+      renderer.changeColor(0, 125, 40);
+      renderer.render(snek.getBody());
 
-      renderer.change_color(0, 120, 120);
-      renderer.render(snek.get_head());
+      renderer.changeColor(0, 120, 120);
+      renderer.render(snek.getHead());
     }
 
     { // EVENT HANDLING
@@ -74,7 +74,7 @@ int main() {
             break;
 
           case SDL_SCANCODE_R:
-            reset_game(snek, foods);
+            resetGame(snek, foods);
             break;
 
           case SDL_SCANCODE_W:
@@ -101,7 +101,7 @@ int main() {
 
         default: // handle custom events
           if (event.type == SNAKE_COLLISION_EVENT) {
-            reset_game(snek, foods);
+            resetGame(snek, foods);
             break;
           }
 

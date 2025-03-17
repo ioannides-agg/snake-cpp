@@ -17,7 +17,7 @@ public:
   float x() const { return food_point.x; }
   float y() const { return food_point.y; }
 
-  void collide_with(SDL_Point snake_head) {
+  void collideWith(SDL_Point snake_head) {
     if (collided)
       return;
 
@@ -30,7 +30,7 @@ public:
     }
   }
 
-  SDL_Point get_point() { return food_point; }
+  SDL_Point getPoint() { return food_point; }
 
 private:
   bool collided = false;
